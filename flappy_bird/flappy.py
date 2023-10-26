@@ -102,11 +102,16 @@ def get_random_pipes(xpos):
     pipe_inverted = Pipe(True, xpos, SCREEN_HEIGTH - size - PIPE_GAP)
     return (pipe, pipe_inverted)
 
+
+
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGTH))
 
 BACKGROUND = pygame.image.load('background-day.png')
 BACKGROUND = pygame.transform.scale(BACKGROUND, (SCREEN_WIDTH, SCREEN_HEIGTH))
+
+
+
 
 bird_group = pygame.sprite.Group()
 bird = Bird()
@@ -165,7 +170,6 @@ while True:
 
     if (pygame.sprite.groupcollide(bird_group, ground_group, False, False, pygame.sprite.collide_mask) or
     pygame.sprite.groupcollide(bird_group, pipe_group, False, False, pygame.sprite.collide_mask)):
-        input()
         break
 
     pygame.display.update()
