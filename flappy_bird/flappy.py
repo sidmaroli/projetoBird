@@ -1,8 +1,8 @@
 import pygame, random 
 from pygame.locals import *
 
-SCREEN_WIDTH = 400
-SCREEN_HEIGTH = 600
+SCREEN_WIDTH = 500
+SCREEN_HEIGTH = 700
 SPEED = 10
 GRAVITY = 1
 GAME_SPEED = 20
@@ -72,6 +72,9 @@ class Pipe( pygame.sprite.Sprite):
         self.rect[0] -= GAME_SPEED
 
 
+class Point():
+    POINTS += 1
+
 
 class Ground(pygame.sprite.Sprite):
 
@@ -128,6 +131,10 @@ for i in range(2):
     pipe_group.add(pipes[0])
     pipe_group.add(pipes[1])
 
+
+
+points = Point()
+
 clock = pygame.time.Clock()
 
 while True:
@@ -171,6 +178,8 @@ while True:
     if (pygame.sprite.groupcollide(bird_group, ground_group, False, False, pygame.sprite.collide_mask) or
     pygame.sprite.groupcollide(bird_group, pipe_group, False, False, pygame.sprite.collide_mask)):
         break
+
+
 
     pygame.display.update()
 
