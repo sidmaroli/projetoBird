@@ -2,10 +2,8 @@ import pygame, random
 
 
 
-
-
-WIDTH = 800
-HEIGTH = 400
+WIDTH = 600
+HEIGTH = 600
 
 pygame.init()
 

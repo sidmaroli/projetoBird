@@ -1,3 +1,4 @@
+from asyncio.windows_utils import pipe
 import pygame, random 
 from pygame.locals import *
 
@@ -15,7 +16,6 @@ PIPE_HEIGTH = 500
 
 PIPE_GAP = 200
 
-POINTS = 0
 
 class Bird(pygame.sprite.Sprite):
 
@@ -71,9 +71,6 @@ class Pipe( pygame.sprite.Sprite):
     def update(self):
         self.rect[0] -= GAME_SPEED
 
-
-class Point():
-    POINTS += 1
 
 
 class Ground(pygame.sprite.Sprite):
@@ -133,8 +130,6 @@ for i in range(2):
 
 
 
-points = Point()
-
 clock = pygame.time.Clock()
 
 while True:
@@ -164,6 +159,8 @@ while True:
 
         pipe_group.add(pipes[0])
         pipe_group.add(pipes[1])
+
+
 
     bird_group.update()
     ground_group.update()
