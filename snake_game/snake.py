@@ -17,17 +17,13 @@ screen = pygame.display.set_mode((WIDTH, HEIGTH))
 game_over = False
 
 white = (225,225,225)
+balck = (0,0,0)
+
 blue = (0,0,225)
 red = (225,0,0)
 
 
-x1 = WIDTH/2
-y1 = HEIGTH/2
-
 snake_block = 10
-
-x1_change = 0
-y1_change = 0
 
 
 clock = pygame.time.Clock()
@@ -39,7 +35,36 @@ def message(msg, color):
     mesg = font_style.render(msg, True, color)
     screen.blit(mesg, (WIDTH/2, HEIGTH/2))
 
+
+
+def gameLoop():
+    game_over = False
+    game_close = False
+
+    x1_change = 0
+    y1_change = 0
+
+    x1 = WIDTH/2
+    y1 = HEIGTH/2
+
+    foodx = round(random.randrage(0, WIDTH - snake_block) / 10.0) * 10.0
+    foody = round(random.randrage(0, WIDTH - snake_block) / 10.0) * 10.0
+
 while not game_over:
+
+    while game_close == True:
+        dis.fill(white)
+        message("Você perdeu! Pressione Q-quit ou C-jogar de novo", red)
+        pygame.display.update()
+
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                 if event.key == pygame.K_q:
+                    game_close = False
+                    game_over = True
+                if event.key == pygame.K_c:
+                    gameLoop()
+                    
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -50,7 +75,7 @@ while not game_over:
                 x1_change = -snake_block
                 y1_change = 0
             elif event.key == pygame.K_RIGHT:
-                x1_change = snake_block
+                x1_change = snake_block 
                 y1_change = 0
             elif event.key == pygame.K_UP:
                 y1_change = -snake_block
@@ -60,13 +85,12 @@ while not game_over:
                 x1_change = 0
 
 
-
-
     x1 += x1_change
     y1 += y1_change
     screen.fill(white)
 
-    pygame.draw.rect(screen, blue,[x1, y1, snake_block, snake_block])
+    pygame.draw.rect(screen, blue,[foodx, foody, snake_block, snake_block])
+    pygame.draw.rect(screen, black,[x1, y1, snake_block, snake_block])
 
     clock.tick(snake_speed)
 
@@ -74,5 +98,3 @@ while not game_over:
     message("Você perdeu", red)    
     pygame.display.update()        
     time.sleep(2)
-
-
