@@ -17,8 +17,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGTH))
 game_over = False
 
 white = (225,225,225)
-balck = (0,0,0)
-
+black = (0,0,0)
 blue = (0,0,225)
 red = (225,0,0)
 
@@ -37,33 +36,33 @@ def message(msg, color):
 
 
 
-def gameLoop():
-    game_over = False
-    game_close = False
 
-    x1_change = 0
-    y1_change = 0
+game_over = False
+game_close = False
 
-    x1 = WIDTH/2
-    y1 = HEIGTH/2
+x1_change = 0
+y1_change = 0
 
-    foodx = round(random.randrage(0, WIDTH - snake_block) / 10.0) * 10.0
-    foody = round(random.randrage(0, WIDTH - snake_block) / 10.0) * 10.0
+x1 = WIDTH/2
+y1 = HEIGTH/2
+
+foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
+foody = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
 
 while not game_over:
 
-    while game_close == True:
-        dis.fill(white)
-        message("Você perdeu! Pressione Q-quit ou C-jogar de novo", red)
-        pygame.display.update()
+    #while game_close == True:
+    #    dis.fill(white)
+    #    message("Você perdeu! Pressione Q-quit ou C-jogar de novo", red)
+    #    pygame.display.update()
 
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                 if event.key == pygame.K_q:
-                    game_close = False
-                    game_over = True
-                if event.key == pygame.K_c:
-                    gameLoop()
+        #for event.type in pygame.event.get():
+            #if event.type == pygame.KEYDOWN:
+                # if event.key == pygame.K_q:
+                #    game_close = False
+                #    game_over = True
+                #if event.key == pygame.K_c:
+                    #gameLoop()
                     
 
     for event in pygame.event.get():
@@ -89,12 +88,12 @@ while not game_over:
     y1 += y1_change
     screen.fill(white)
 
-    pygame.draw.rect(screen, blue,[foodx, foody, snake_block, snake_block])
+    #pygame.draw.rect(screen, blue,[foodx, foody, snake_block, snake_block])
     pygame.draw.rect(screen, black,[x1, y1, snake_block, snake_block])
 
-    clock.tick(snake_speed)
+    clock.tick(snake_block)
 
 
-    message("Você perdeu", red)    
+    #message("Você perdeu", red)    
     pygame.display.update()        
     time.sleep(2)
