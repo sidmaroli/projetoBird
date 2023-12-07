@@ -18,7 +18,7 @@ black = (0,0,0)
 
 
 snake_block = 10
-tickt = 15
+tickt = 13
 
 clock = pygame.time.Clock()
 snake_speed = 10
@@ -34,7 +34,7 @@ x1 = WIDTH/2
 y1 = HEIGTH/2
 
 foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
-foody = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
+foody = round(random.randrange(0, HEIGTH - snake_block) / 10.0) * 10.0
 
 while not game_over:
 
@@ -64,7 +64,7 @@ while not game_over:
 
     x1 += x1_change
     y1 += y1_change
-    screen.fill(black)
+    screen.fill(white)
 
     pygame.draw.rect(screen, red,[foodx, foody, snake_block, snake_block])
     pygame.draw.rect(screen, green,[x1, y1, snake_block, snake_block])
