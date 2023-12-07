@@ -30,7 +30,7 @@ score_font = pygame.font.SysFont("comicsansms", 35)
 
 
 def Score(score):
-    value = score_font.render("Ponto: " + str(score), True, yellow)
+    value = score_font.render("Pontos: " + str(score), True, yellow)
     screen.blit(value, [0,0])
 
 def our_snake(snake_block, snake_list):
@@ -52,7 +52,7 @@ def gameLoop():
     y1 = HEIGTH/2
 
     snake_List = []
-    Langth_snake = 1
+    Length_snake = 1
 
     foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
     foody = round(random.randrange(0, HEIGTH - snake_block) / 10.0) * 10.0
@@ -62,7 +62,7 @@ def gameLoop():
         while game_close == True:
                 screen.fill(white)
                 message("Você perdeu! Pressione C-Jogar denovo ou Q-Sair", red)
-                Score(Langth_snake - 1)
+                Score(Length_snake - 1)
                 pygame.display.update()
  
                 for event in pygame.event.get():
@@ -91,7 +91,7 @@ def gameLoop():
                     y1_change = snake_block
                     x1_change = 0
 
-        if x1 >= WIDTH or x1 <= 0 or y1 >= HEIGTH or y1 <= 0:
+        if x1 >= WIDTH or x1 < 0 or y1 >= HEIGTH or y1 < 0:
             game_close = True
 
         x1 += x1_change
@@ -104,7 +104,7 @@ def gameLoop():
         snake_Head.append(y1)
         snake_List.append(snake_Head)
 
-        if len(snake_List) >= Langth_snake:
+        if len(snake_List) > Length_snake:
             del snake_List[0]
 
         for x in snake_List[:-1]:
@@ -112,12 +112,12 @@ def gameLoop():
                 game_close = True
 
         our_snake(snake_block, snake_List)
-        Score(Langth_snake - 1)
+        Score(Length_snake - 1)
 
         if x1 == foodx and y1 == foody:
             foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
             foody = round(random.randrange(0, HEIGTH - snake_block) / 10.0) * 10.0
-            Length_of_snake += 1
+            Length_snake += 1
 
         clock.tick(tickt)
  
