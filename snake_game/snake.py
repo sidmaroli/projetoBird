@@ -1,7 +1,5 @@
 import pygame
 import random
-import time
-
 
 WIDTH = 700
 HEIGTH = 400
@@ -44,7 +42,6 @@ def message(msg, color):
 def gameLoop():
     game_over = False
     game_close = False
-
     x1_change = 0
     y1_change = 0
 
@@ -54,8 +51,8 @@ def gameLoop():
     snake_List = []
     Length_snake = 1
 
-    foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0
-    foody = round(random.randrange(0, HEIGTH - snake_block) / 10.0) * 10.0
+    foodx = round(random.randrange(0, WIDTH - snake_block) / 10.0) * 10.0  
+    foody = round(random.randrange(0, HEIGTH - snake_block) / 10.0) * 10.0 
 
     while not game_over:
 
